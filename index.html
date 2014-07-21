@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html> 
+<!--
+  Copyright 2011 Google Inc.
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+ 
+     http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ 
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Chrome DevRel Team (chrome-devrel@googlegroups.com)
+                 Alex Russell (slightlyoff@chromium.org)
+                 Brad Neuberg
+--> 
+<html manifest="cache.appcache"> 
+  <head> 
+    <meta charset="utf-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" /> 
+    <title>HTML5 Presentation</title> 
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css" /> 
+    <link id="prettify-link" href="src/prettify/prettify.css" rel="stylesheet" disabled /> 
+    <link href="css/moon.css" class="theme" rel="stylesheet" /> 
+    <link href="css/sand.css" class="theme" rel="stylesheet" /> 
+    <link href="css/sea_wave.css" class="theme" rel="stylesheet" /> 
+    <link href="css/default.css" class="theme" rel="stylesheet" media="screen"  /> 
+    <link href="css/common.css" rel="stylesheet" media="screen" /> 
+  </head> 
+  <body> 
+    <nav id="helpers"> 
+      <button title="Previous slide" id="nav-prev" class="nav-prev">⇽</button> 
+      <button title="Jump to a random slide" id="slide-no">5</button> 
+      <button title="Next slide" id="nav-next" class="nav-next">⇾</button> 
+      <menu> 
+        <button type="checkbox" data-command="toc" title="Table of Contents" class="toc">TOC</button> 
+        <!-- <button type="checkbox" data-command="resources" title="View Related Resources">☆</button> --> 
+        <button type="checkbox" data-command="notes" title="View Slide Notes">✏</button> 
+        <button type="checkbox" data-command="source" title="View slide source">↻</button> 
+        <button type="checkbox" data-command="help" title="View Help">?</button> 
+      </menu> 
+    </nav> 
+    <div class="presentation"> 
+      <div id="presentation-counter">Loading...</div> 
+      <div class="slides"> 
+      
+        
+         <div class="slide" id="landing-slide"> 
+          <style> 
+
+            #landing-slide h1 {
+              letter-spacing: -2px;
+              font-size: 60px;
+              padding-top:0px;
+            }
+            #landing-slide h3 {
+              margin-top: -5px;
+              font-size: 20px;
+              letter-spacing: -1px;
+              padding-top: 30px;
+              padding-bottom: 60px;
+              margin-left:100px;
+              margin-right:100px;
+              border-bottom: solid 1px #9a9ab3;
+            }
+
+          </style> 
+          <section class="middle"> 
+          <span id="left-init-key" class="key" style="display:none;">&rarr;</span>
+         
+          <hgroup> 
+
+            <h1> 
+                CoAP
+              </h1>
+              <h3 style="line-height:150%"> 
+                Constrained Application Protocol<br />
+                "co-app"
+              </h3>
+
+
+            
+            Équipe MADYNES <img src="files/logo_INRIA.png" style="width:100px;padding-left:1em;vertical-align:-7px;" alt="iphone keyboard on input type email" /> <br /> 
+6 Octobre 2011 
+
+     </hgroup> 
+           
+            
+          </section> 
+          <aside class="note"> 
+            <section class="normal"> 
+              Welcome! (This field is for presenter notes and commentary.)
+            </section> 
+          </aside> 
+        </div> 
+ 
+     
+     
+     <div class="slide" id="table-of-contents"> 
+          <header><h1>We will cover...</h1></header> 
+          <style> 
+            #toc-list > li {
+              font-size: 26px;
+              line-height: 33px;
+              opacity: 0.85;
+            }
+            #toc-list > li:hover {
+              opacity: 1;
+            }
+            #toc-list a {
+              border-bottom: 0;
+            }
+            #toc-list a:hover{
+              border-bottom: 2px solid #3f3f3f;
+            }
+            #toc-list img {
+              vertical-align: middle;
+              margin-left: 15px;
+            }
+          </style> 
+          <section class="normal"> 
+            <h2>Contents:</h2> 
+            <ul id="toc-list"> 
+            </ul> 
+            
+   
+          </section> 
+        </div> 
+        
+        
+         <div class="slide transitionSlide" id="nuts-bolts-title"> 
+          <section class="middle"> 
+            <h2>REST</h2> 
+            <p>very shortly</p>
+            <img src="http://www.html5rocks.com/static/images/identity/classes_64/HTML5_Performance_64.png" title="HTML5 Performance &amp; Integration" alt="HTML5 Performance &amp; Integration"> 
+          </section> 
+        </div>
+        
+       
+ 
+        
+        
+        <div class="slide" id="rest"> 
+          <header>What is REST?</header> 
+          <section class="normal" data-build> 
+            <style> 
+               #form-types-mobile div {
+                float: left;
+                width: 48%;
+                padding-right: 1%;
+                text-align: center;
+              }
+.triangle-right {
+	position:relative;
+	margin-left:40px;
+}
+
+.triangle-right:after {
+	content:"";
+	position:absolute;
+	width:0;
+	left:-70px; /* value = - border-left-width - border-right-width */
+	top:96px; 
+	border-style:solid; /* vary these values to change the angle of the vertex */
+    /*border-color:transparent rgba(0, 0, 0, 0.2);  */
+    border-color: transparent rgba(0, 0, 0, 0.2); transparent; transparent ;  
+    border-width:3px 69px 0 0; /* vary these values to change the angle of the vertex */
+}
+/*style="float:right;display: inline-block;padding:2px;font-size:12px;width:320px;"*/
+#rest div > ul{
+    padding-bottom:0;
+    margin-bottom:0;
+    padding-top:0;
+    margin-top:0;
+}
+            </style>
+            <div class="example"> 
+                <ul>
+                        <li>If you know HTTP, you know REST</li>
+                </ul>
+            </div>
+            <div class="example"> 
+                <ul>
+                    
+                 
+                    <li>Network architecture style, not a standard or protocol</li>
+                    <li>Data/resource-oriented</li>
+                    <li><span style="color:darkOrchid">Representational</span> <span style="color:yellow">State</span> <span style="color:orange">Transfer</span>, Roy Fielding [1]  </li>
+                    <div class="example" style="font-size:15px;">"Representational State Transfer is intended to evoke an image of how a well-designed Web application behaves: a network of web pages (a virtual state-machine), where the user progresses through an application by selecting links (state transitions), resulting in the next page (representing the next state of the application) being transferred to the user and rendered for their use."</div>  
+                                   
+                    <ul >
+                        <li> <span style="color:red">resource</span>: referent of an URI &nbsp;(<a href="http://en.wikipedia.org/wiki/Resource_(Web)">wiki.../Resource_(Web)</a>) </li> 
+                        <li> <span style="color:darkOrchid">representation</span>: <span style="color:red">resource</span> image (media-type)</li>
+                        <li> <span style="color:yellow">state</span>: the representation brings the client in a state</li>
+                        <li> <span style="color:orange">transfer</span>: any state change following a link (a page is a graph of links)</li>
+                        <li>Examples &rarr; &nbsp;&nbsp; <a href="http://delicious.com/help/api">del.icio.us</a> (<a href="http://www.peej.co.uk/articles/restfully-delicious.html">*</a>), <a href="https://dev.twitter.com/console">twitter api</a></li>
+                    </ul>
+                    
+                 </ul>
+            </div>
+            
+            <!-- <span style="color:darkOrchid;font-size:15px;float:right">"handler" of <br /><em><a href="http://www.nespresso.com/#/fr/fr/cafe_nespresso/grands_crus/espresso_roma" style="border-bottom: 1px solid darkOrchid;">http://nespresso.com/...roma</a></em></span>
+            
+            <span style="color:darkOrchid;font-size:15px;float:right"">what is returned<br />for ex: espresso_roma.html</span>
+            
+            -->
+        
+
+ <div style="position:absolute;width:93%;bottom:10px;border-top:solid 1px #9a9ab3;font-size:15px;"> 
+               [1]: <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm</a>, apache, http/1.1 specs
+               
+            </div>
+            
+            
+          </section>
+        </div> 
+        
+         
+        
+
+        
+        
+      <div class="slide" id="rest2"> 
+          <header>What is REST?</header> 
+          <section class="normal"> 
+            <style> 
+            </style> 
+
+            <div class="example"> 
+                <ul>
+                    <li>RESTful Constraints <span class="html">properties</span>:</li>
+                    <ol >
+                        <li> Client–Server &nbsp;<span class="html">independance</span>, <span class="html">scalability</span></li>
+                        <li> Stateless:&nbsp; any session state is held in the client,  no client context stored on the server between requests <span class="html">reliability</span></li>
+                        <li> Cacheable:&nbsp; clients can cache responses <span class="html">scalability</span>, <span class="html">performance</span></li>
+                        <li> Layered system:&nbsp; intermediary servers (load balancing, shared caches, firewalls, proxies, gateways) <span class="html">performance</span>, <span class="html">security</span>, <span class="html">compatibilities</span></li>
+                        <li> Code on demand (optional):&nbsp; client-side scripts (js) or Java applets</li>
+                        <li> Uniform interface:&nbsp;  methods:  GET, POST, PUT, DELETE or ...</li>
+                    </ol>
+                </ul>
+                
+                <ul>
+                    <li>RESTless:</li>
+                    <ul >
+                        <li> Tunneling everything through GET, POST (params,...), Misusing cookies, Method-oriented protocols (RPC, SOAP*...)</li>
+                    </ul>
+                </ul>
+
+            </div>
+       
+            <div style="position:absolute;width:93%;bottom:10px;border-top:solid 1px #9a9ab3;font-size:15px;"> 
+               <a href="http://tomayko.com/writings/rest-to-my-wife">http://tomayko.com/writings/rest-to-my-wife</a>,&nbsp; 
+               <a href="http://www.infoq.com/articles/rest-introduction">http://www.infoq.com/articles/rest-introduction</a> -<a href="http://www.infoq.com/articles/rest-anti-patterns">...rest-anti-patterns</a>
+               
+            </div>
+            
+          </section> 
+          <aside class="note"> 
+            <section class="normal"> 
+              SOAP WS-* standards security
+            </section> 
+          </aside> 
+  
+        </div> 
+        
+        <div class="slide" id="rest3"> 
+          <header>What is REST?</header> 
+          <section class="normal"> 
+            <style> 
+            </style> 
+
+            <div class="example" style="height:560px;margin-top:10px;"> 
+                    <figure style="padding-left:20px;text-align:center;display:inline-block;vertical-align:text-top"> 
+                    <img src="files/rest-vs-soap.png" alt="REST Vs SOAP" height="85%"/> 
+                    <figcaption><a href="http://livoris.de/node/16">http://livoris.de/node/16</a></figcaption> 
+                  </figure> 
+
+                
+            
+
+            </div>
+   
+          </section> 
+  
+        </div> 
+        
+
+        <div class="slide transitionSlide" id="hardware-access-title"> 
+          <section class="middle"> 
+            <h2>CoRE</h2> 
+            <p>Constrained RESTful Environments</p> 
+            <img src="http://www.html5rocks.com/static/images/identity/classes_64/HTML5_Device_Access_64.png" title="HTML5 Device Access" alt="HTML5 Device Access"> 
+          </section> 
+        </div>
+ 
+ 
+        
+        <div class="slide" id="core"> 
+          <header>CoRE standards</header> 
+          <section class="normal"> 
+            <style> 
+            </style> 
+
+            <div class="example"> 
+                <ul>
+                    <li>IETF Constrained RESTful Environments WG</li>
+                    <ul >
+                        <li><a href="http://tools.ietf.org/wg/core/">http://tools.ietf.org/wg/core</a> </li>
+                         <ul >
+                            <li><a href="http://tools.ietf.org/wg/core/draft-ietf-core-coap/">draft-ietf-core-coap</a> (&rarr;)</li>
+                            <li><a href="http://tools.ietf.org/wg/core/draft-ietf-core-link-format/">draft-ietf-core-link-format</a>  &nbsp;&nbsp;&nbsp;"discover"</li>
+                            <li><a href="http://tools.ietf.org/wg/core/draft-ietf-core-block/">draft-ietf-core-block</a>&nbsp;&nbsp;&nbsp; block transfer protocol</li> 
+                            <li><a href="http://tools.ietf.org/wg/core/draft-ietf-core-observe/">draft-ietf-core-observe</a> &nbsp;&nbsp;&nbsp;"observing"</li> 
+                       </ul>
+                    </ul>
+                </ul>
+                
+
+            </div>
+       
+
+            
+          </section> 
+  
+        </div> 
+        
+               <div class="slide" id="core-link"> 
+          <header>CoRE Link Format</header> 
+          <section class="normal" > 
+            <style> 
+             #corelink1 ol > li {
+                padding:0;
+                margin:0;
+                font-size: 95%;
+             }
+            </style> 
+
+            <div class="example" id="corelink1"> 
+                <ul>
+                    <li>Aims:</li>
+                    <ul >
+                        <li>media type: application/link-format</li>
+                        <li>Web Linking for constrained devices, resource description</li>
+                    </ul>
+               
+                 <li>Use:</li>
+                    <ul >
+
+                        <li> is requested addressing '<pre style="display: inline-block;margin:0;padding:0;"><em>/.well-known/core</em></pre>' URI suffix </li>
+
+                    </ul>
+                    
+                <li>Ex requests:</li>
+                    <ol>
+                        <li> <pre>GET /.well-known/core</pre> </li>
+                        <li> <pre>GET /.well-known/core?rt=LightLux</pre> </li>
+                        <li> <pre>GET /.well-known/core?anchor=/sensors/temp</pre> </li>
+                    </ol>
+
+                </ul>
+                
+
+            </div>
+
+          </section> 
+ 
+        </div> 
+        
+        
+         <div class="slide" id="core-link2"> 
+          <header>CoRE Link Format</header> 
+          <section class="normal" > 
+            <style> 
+            #corelink2 ol > li {
+                padding:0;
+                margin:0;
+                font-size: 95%;
+             }
+            </style> 
+
+            <div class="example" id="corelink2"> 
+                <ul>
+ 
+                    
+                <li>Ex responses:</li>
+                    <ol >
+                        <li> <pre>2.05 "Content"
+&lt;<b>/sensors</b>&gt;;rt="index";title="Sensor Index";sz=1024,
+&lt;<b>/sensors/temp</b>&gt;;rt="TemperatureC";if="sensor",
+&lt;<b>/sensors/light</b>&gt;;rt="LightLux";if="sensor",
+&lt;http://www.example.com/sensors/t123&gt;;anchor="/sensors/temp"
+;rel="describedby",
+&lt;<b>/t</b>&gt;;anchor="/sensors/temp";rel="alternate"</pre> </li>
+                        <li> <pre>2.05 "Content"
+&lt;<b>/sensors/light</b>&gt;;rt="LightLux";if="sensor"</pre> </li>
+                        <li> <pre>2.05 "Content"
+&lt;http://www.example.com/sensors/temp123&gt;;anchor="/sensors/temp"
+;rel="describedby",
+&lt;<b>/t</b>&gt;;anchor="/sensors/temp";rel="alternate"</pre> </li>
+                    </ol>
+
+                </ul>
+                
+
+            </div>
+
+          </section> 
+ 
+        </div> 
+        
+        
+        
+        <div class="slide" id="core-block"> 
+          <header>Blockwise transfers in CoAP</header> 
+          <section class="normal" > 
+            <style> 
+            </style> 
+
+            <div class="example"> 
+                <ul>
+                    <li>Aims:</li>
+                    <ul >
+                        <li> Limit numbers of ip-layer fragments (mtu=128 B)</li>
+                    </ul>
+               
+                 <li>Options:</li>
+                    <ul >
+                        <li style="list-style:none;">  
+                        <table style="display:inline-block;text-align:center;">
+                        <thead style="background:pink;">
+                            <tr>
+                                <td>
+                                 Type
+                                </td>
+                                <td>
+                                C/E
+                                </td>
+                                <td>
+                                Name
+                                </td>
+                                <td>
+                                Format
+                                </td>
+                                <td>
+                                Length
+                                </td>
+                                <td>
+                                Default
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                 19
+                                </td>
+                                <td>
+                                Critical
+                                </td>
+                                <td>
+                                Block1
+                                </td>
+                                <td>
+                                uint
+                                </td>
+                                <td>
+                                1-3 B
+                                </td>
+                                <td>
+                                0
+                                </td>
+                                <td>
+                                &nbsp;&nbsp;client &rarr; server
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                 17
+                                </td>
+                                 <td>
+                                Critical
+                                </td>
+                                <td>
+                                Block2
+                                </td>
+                                <td>
+                                uint
+                                </td>
+                                <td>
+                                1-3 B
+                                </td>
+                                <td>
+                                0
+                                </td>
+                                <td>
+                                &nbsp;&nbsp;server &rarr; client
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        </li>
+                        <li style="list-style:none;padding-bottom:0;margin-bottom:0;"> 
+                        <figure>
+                            <pre style="display: inline-block;margin:0;padding:0;font-size:11px">
+   CLIENT                                                     SERVER
+     |                                                          |
+     | CON [MID=1234], GET, /status                     ------> |
+     |                                                          |
+     | <------   ACK [MID=1234], 2.05 Content, 2/0/1/128        |
+     |                                                          |
+     | CON [MID=1235], GET, /status, 2/2/0/64           ------> |
+     |                                                          |
+     | <------   ACK [MID=1235], 2.05 Content, 2/2/1/64         |
+     |                                                          |
+     | CON [MID=1236], GET, /status, 2/3/0/64           ------> |
+     |                                                          |
+     | <------   ACK [MID=1236], 2.05 Content, 2/3/1/64         |
+     |                                                          |
+     | CON [MID=1237], GET, /status, 2/4/0/64           ------> |
+     |                                                          |
+     | <------   ACK [MID=1237], 2.05 Content, 2/4/1/64         |
+     |                                                          |
+     | CON [MID=1238], GET, /status, 2/5/0/64           ------> |
+     |                                                          |
+     | <------   ACK [MID=1238], 2.05 Content, 2/5/0/64         |
+                            </pre>
+                        <figcaption style="font-size:16px;padding-left:35px;"><a href="http://tools.ietf.org/html/draft-ietf-core-block-04#section-3">#section-3 Figure 4: Blockwise GET with late negotiation </a></figcaption>
+                        </figure>
+                        </li> 
+
+                    </ul>
+
+                </ul>
+                
+
+            </div>
+       
+
+            
+          </section> 
+  
+        </div> 
+        
+        
+        <div class="slide" id="core-observe"> 
+          <header>Observing</header> 
+          <section class="normal" > 
+            <style> 
+            </style> 
+
+            <div class="example"> 
+                <ul>
+                <li>Aims:</li>
+                    <ul >
+                        <li> Asynchronous subscription to a resource </li>
+                        <li> Avoid continuous polling </li>
+                    </ul>
+                    
+                <li>Use:</li>
+                    <ul >
+                        <li>observable resources have an "obs" flag in their core-link format</li>
+                        <li>client subscribe with a GET & observe option</li>
+                        <li>push notifications from server at any change</li>
+                        <li>
+                        <table style="display:inline-block;text-align:center;">
+                        <thead style="background:pink;">
+                            <tr>
+                                <td>
+                                 Type
+                                </td>
+                                <td>
+                                C/E
+                                </td>
+                                <td>
+                                Name
+                                </td>
+                                <td>
+                                Format
+                                </td>
+                                <td>
+                                Length
+                                </td>
+                                <td>
+                                Default
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                 10
+                                </td>
+                                <td>
+                                Elective
+                                </td>
+                                <td>
+                                Observe
+                                </td>
+                                <td>
+                                uint
+                                </td>
+                                <td>
+                                0-2 B
+                                </td>
+                                <td>
+                                (none)
+                                </td>
+                                <td>
+                                &nbsp;&nbsp;  
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        </li>
+                        <li>Obs relationship is ended with a GET from the client</li>
+                    </ul>
+                </ul>
+                
+
+            </div>
+       
+
+            
+          </section> 
+  
+        </div> 
+        
+        
+        <div class="slide transitionSlide" id="offline-storage-title"> 
+          <section class="middle"> 
+            <h2>CoAP</h2> 
+            <p>a description</p>
+            <img src="http://www.html5rocks.com/static/images/identity/classes_64/HTML5_Offline_Storage_64.png" title="HTML5 Offline &amp; Storage" alt="HTML5 Offline &amp; Storage"> 
+          </section> 
+        </div>
+        
+        
+        <div class="slide" id="slide1"> 
+          <header>CoAP</header> 
+          <section class="normal" data-build> 
+            <style> 
+               
+            </style> 
+            <h2>In brief</h2> 
+            <div class="example"> 
+                <ul> 
+                    <li> RESTful application-layer protocol over UDP</li> ex: <a href="coap://vs0.inf.ethz.ch/">coap://vs0.inf.ethz.ch/</a> (requires a coap browser extension (Copper, ...))
+                    <li> Simplified parsing, low overheaded, compared to RESTful HTTP interfaces</li> 
+                    <li><a href="http://tools.ietf.org/html/draft-castellani-core-http-coap-mapping-01">HTTP-CoAP mapping</a>, 
+<a href="http://fr.androidzoom.com/android_applications/tools/nodes-httpcoap-mapping_bgwph.html">android example</a> (<a href="http://code.google.com/p/nodes">http://code.google.com/p/nodes</a>)</li> 
+                    
+                </ul>
+            </div>
+            <h2>Features</h2>
+            <ul> 
+                <li>&darr; HTTP</li> 
+                <div class="example"> 
+                    <ul> 
+                        <li>Extensible header options but in ICMP-style: Type-Length-Value format</li>
+                        <li>Resource abstraction, URI, media-type</li>
+                        <li>Caching (Max-Age or ETag)*, proxy capabilities (Proxy-Uri)</li>
+                        <li>Secured version: <pre style="display: inline-block;margin:0;padding:0;">"<em>coaps://</em>"</pre> using DTLS</li>
+                        <!-- <li>Blockwise transfers <a href="http://tools.ietf.org/html/draft-ietf-core-block-04">http://tools.ietf.org/html/draft-ietf-core-block-04</a></li> -->
+                    </ul>
+                </div>
+                
+            </ul>
+            <br />
+      
+          </section>
+          <aside class="note"> 
+            <section class="normal"> 
+              Unlike HTTP, the cacheability of CoAP responses does not depend on
+   the request method, but the Response Code (draft-ietf-core-coap-07#section-5.6)
+            </section> 
+          </aside>  
+        </div> 
+        
+        
+        
+        
+        
+        
+        
+             <div class="slide" id="slide2"> 
+          <header>CoAP</header> 
+          <section class="normal"> 
+            <style> 
+               
+            </style> 
+            <ul>
+                <li>other different features</li> 
+                <div class="example"> 
+                    <ul>
+                        <li>It's all binary</li>
+                        <li>UDP based
+                        <ul >
+                            <li> asynchronous coms</li>
+                            <li> unicast, multicast (&ne; not specified yet)</li>
+                        </ul>
+                        </li>
+                        <li> Reliability
+                        <ul >
+                            <li> Transaction messages: (CON=Confirmable, NON=Non-Confirmable, ACK=Acknowledgment, RST=Reset)  </li>
+                            <li> exponential timeouts untill ack or max tries </li>
+                        </ul>
+                        </li>
+                        <!-- <li>Discovery of resources with  URI suffix <a href="http://tools.ietf.org/html/draft-ietf-core-link-format-07">http://tools.ietf.org/html/draft-ietf-core-link-format-07</a></li> -->
+                        <!-- <li>Subscription for an "observing resource" 
+ <a href="http://tools.ietf.org/html/draft-ietf-core-observe-02">http://tools.ietf.org/html/draft-ietf-core-observe-02</a>  
+                        </li> -->
+                        <li>piggy-backing, for CON responses, the ACK comes with the payload (if resource immediately available)</li>  
+
+                        
+
+                        
+                    </ul>
+                </div>
+            
+            </ul>
+ 
+            
+            
+          </section> 
+        </div> 
+        
+        
+        <div class="slide" id="slide3"> 
+          <header>CoAP</header> 
+          <section class="normal"> 
+            <style> 
+               
+            </style> 
+            <ul>
+                <li>others features</li> 
+                <div class="example"> 
+                    <ul>
+                        <li>Token option to match responses to requests</li>
+                        <li>Separate responses </li>  
+                        <figure >
+                        <pre style="display: inline-block;margin:0;padding:0;font-size:12px">
+   Client  Server
+      |      |
+      |      |
+      +----->|     Header: GET (T=CON, Code=1, MID=0x7d38)
+      | GET  |      Token: 0x53
+      |      |   Uri-Path: "temperature"
+      |      |
+      |      |
+      |<- - -+     Header: (T=ACK, Code=0, MID=0x7d38)
+      |      |
+      |      |
+      |<-----+     Header: 2.05 Content (T=CON, Code=69, MID=0xad7b)
+      | 2.05 |      Token: 0x53
+      |      |    Payload: "22.3 C"
+      |      |
+      |      |
+      +- - ->|     Header: (T=ACK, Code=0, MID=0xad7b)
+      |      |
+                        </pre>
+                      <figcaption style="font-size:16px;padding-left:15px;"><a href="http://tools.ietf.org/html/draft-ietf-core-coap-07#appendix-B">#appendix-B Figure 15: Confirmable request; separate response</a></figcaption>
+                    </figure>  
+                    </ul>
+                </div>
+            
+            </ul>
+ 
+            
+            
+          </section> 
+        </div> 
+        
+        <div class="slide transitionSlide" id="semantics-markup-title"> 
+          <section class="middle"> 
+            <h2>A comparison test HTTP & CoAP</h2> 
+            <p>with Contiki Cooja simulator</p> 
+            <img src="http://www.html5rocks.com/static/images/identity/classes_64/HTML5_Semantics_64.png" title="HTML5 Semantics &amp; Markup" alt="HTML5 Semantics &amp; Markup"> 
+          </section> 
+        </div> 
+        
+        
+        <div class="slide" id="test0" id="test0"> 
+        <header>Http Vs Coap latencies (cacheless)</header> 
+          <section class="normal">
+          <style> 
+             #test0 div {
+                background: url('files/Capture-Cooja.png') no-repeat;
+                background-size: 100%;
+             }
+         </style> 
+          <div style="height:570px;">
+          <ol style="padding-top:190px;">
+            <li>some border-router Cooja &harr; computer</li>
+            <li>rest-server with http</li>
+            <li>rest-server with coap</li>
+          </ol>
+          <ul>
+            <li>NETWORK sicslowpan_driver</li>
+            <li>MAC csma_driver</li>
+            <li>RDC nullrdc_driver</li>
+            <li>RADIO cooja_radio_driver or cc2420_driver</li>
+          </ul>
+          </div>
+
+          </section> 
+  
+        </div>
+        
+        
+        <div class="slide" id="test" > 
+          <section class="normal">
+          <poster>
+            <figure style="text-align:center;"> 
+                    <img src="files/Capture-http.png" alt="http cap" height="85%"/> 
+                    <figcaption>HTTP latency &asymp; 515ms<br/>sky nodes</figcaption> 
+                  </figure>
+          </poster>
+
+          </section> 
+  
+        </div> 
+        
+        
+        <div class="slide" id="test2">  
+          <section class="normal">
+          <poster>
+            <figure style="text-align:center;padding-left:100px;"> 
+                    <img src="files/Capture-coap.png" alt="coap cap" height="85%"/>
+                    <figcaption>COAP with block transfer: total latency &asymp;166ms (128B), 343ms (64B), 619ms (32B)<br/>sky nodes</figcaption>
+                  </figure>
+          </poster>
+
+          </section> 
+        </div>
+          
+        <div class="slide" id="test3" > 
+          <section class="normal">
+          <poster>
+            <figure style="text-align:center;padding-left:50px;"> 
+                    <img src="files/Capture-http-cooja.png" alt="http cap" height="85%"/> 
+                    <figcaption>HTTP: latency &asymp; 492ms <br/>cooja nodes</figcaption> 
+                  </figure>
+          </poster>
+
+          </section> 
+  
+        </div>
+        
+        <div class="slide" id="test4">  
+          <section class="normal">
+          <poster>
+            <figure style="text-align:center;"> 
+                    <img src="files/Capture-coap-cooja-noblock.png" alt="coap cap" height="80%"/>
+                    <figcaption>COAP without block transfer: latency  14ms-17ms<br/>cooja nodes</figcaption>
+                  </figure>
+          </poster>
+
+          </section> 
+  
+        </div>  
+        
+        
+        <div class="slide" id="test5">  
+          <section class="normal">
+          <poster>
+            <figure style="text-align:center;padding-left:100px;"> 
+                    <img src="files/Capture-coap-cooja.png" alt="coap cap" height="85%"/>
+                    <figcaption>COAP with block transfer:<br/>cooja nodes</figcaption>
+                  </figure>
+          </poster>
+
+          </section> 
+        </div>
+          
+        
+        
+        
+        
+   
+ 
+        
+  <!--
+    <div class="slide semantics" id="form-types-mobile"> 
+          <header><span class="html">HTML</span> <h1>Form field types on mobile</h1></header> 
+          <section> 
+            <style type="text/css" media="screen"> 
+              #form-types-mobile div {
+                float: left;
+                width: 48%;
+                padding-right: 1%;
+                text-align: center;
+              }
+              #form-types-mobile img {
+                width: 90%;
+                <!-- -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 4px 6px; -->
+   <!--           }
+            </style> 
+            <div> 
+<pre>type="<em>email</em>"</pre> 
+              <figure> 
+                <img src="files/logo_INRIA.png" alt="iphone keyboard on input type email" /> 
+                <figcaption>iPhone Device</figcaption> 
+              </figure> 
+            </div> 
+            <div> 
+<pre>type="<em>tel</em>"</pre> 
+              <figure> 
+                <img src="files/sensas2.png" alt="iphone keyboard on input type tel" /> 
+                <figcaption>iPhone Device</figcaption> 
+              </figure> 
+            </div> 
+          </section> 
+        </div> 
+       -->
+        
+
+ 
+      </div> <!-- slides --> 
+      <div id="speaker-note" class="invisible" style="display: none;"> 
+      </div> <!-- speaker note --> 
+      <aside id="help" class="sidebar invisible" style="display: hidden;"> 
+        <table> 
+          <caption>Help</caption> 
+          <tbody> 
+            <tr> 
+              <th>Move Around</th> 
+              <td>&larr;&nbsp;&rarr;</td> 
+            </tr> 
+            <tr> 
+              <th>Source File</th> 
+              <td>s</td> 
+            </tr> 
+            <tr> 
+              <th>Change Theme</th> 
+              <td>t</td> 
+            </tr> 
+            <tr> 
+              <th>Syntax Highlight</th> 
+              <td>h</td> 
+            </tr> 
+            <tr> 
+              <th>Speaker Notes</th> 
+              <td>n</td> 
+            </tr> 
+            <tr> 
+              <th>Toggle 3D</th> 
+              <td>3</td> 
+            </tr> 
+            <tr> 
+              <th>Help</th> 
+              <td>0</td> 
+            </tr> 
+          </tbody> 
+        </table> 
+      </aside> 
+    </div> <!-- presentation --> 
+ 
+    <!--[if lt IE 9]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
+    </script>
+    <script>CFInstall.check({ mode: "overlay" });</script>
+    <![endif]--> 
+ 
+    <script src="src/prettify/prettify.js" onload="prettyPrint();" defer></script> 
+    <script src="js/utils.js"></script> 
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+    <script> 
+      // Check if new appcache is available, load it, and reload page.
+      if (window.applicationCache) {
+        window.applicationCache.addEventListener('updateready', function(e) {
+          if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+            window.applicationCache.swapCache();
+            if (confirm('A new version of this site is available. Load it?')) {
+              window.location.reload();
+            }
+          }
+        }, false);
+      }
+ 
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-15028909-5']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+ 
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script> 
+  </body> 
+</html>
+
